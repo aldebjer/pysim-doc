@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systems &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="simulation" href="simulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_pysim.html">Using PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_systems.html">Creating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_pysim.html">Building PySim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation.html">simulation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pysim.commonsystem">CommonSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pysim.cppsystem">CppSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pysim.cythonsystem">CythonSystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pysim.connections">Connections</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="reference.html">Reference</a> &raquo;</li>
+      <li>Systems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/systems.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="systems">
+<h1>Systems<a class="headerlink" href="#systems" title="Permalink to this headline"></a></h1>
+<p>There are different systems that can be used in a simulation. The standard
+building block is a c++ system, but there are also cython and python
+systems that fill the same role, but are much slower. All of these systems
+are based on something called a commonsystem.</p>
+<section id="module-pysim.commonsystem">
+<span id="commonsystem"></span><h2>CommonSystem<a class="headerlink" href="#module-pysim.commonsystem" title="Permalink to this headline"></a></h2>
+<p>Systems used for simulation.</p>
+<p>Base classes for systems. They are inherited by <code class="xref py py-obj docutils literal notranslate"><span class="pre">CppSystems</span></code> and
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">CythonSystems</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.commonsystem.</span></span><span class="sig-name descname"><span class="pre">CommonSystem</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem" title="Permalink to this definition"></a></dt>
+<dd><p>Common base class for systems that are editable from Python.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.pars">
+<span class="sig-name descname"><span class="pre">pars</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.pars" title="Permalink to this definition"></a></dt>
+<dd><p>The parameters, can be set before the simulation starts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.Parameters" title="pysim.commonsystem.Parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Parameters</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.inputs" title="Permalink to this definition"></a></dt>
+<dd><p>The inputs to the system, can be set and connected to outputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.PysimVars" title="pysim.commonsystem.PysimVars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PysimVars</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.outputs">
+<span class="sig-name descname"><span class="pre">outputs</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.outputs" title="Permalink to this definition"></a></dt>
+<dd><p>the outputs of the system, can be connected to inputs of other systems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.PysimVars" title="pysim.commonsystem.PysimVars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PysimVars</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.states">
+<span class="sig-name descname"><span class="pre">states</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.states" title="Permalink to this definition"></a></dt>
+<dd><p>The states of the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.PysimVars" title="pysim.commonsystem.PysimVars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PysimVars</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.ders">
+<span class="sig-name descname"><span class="pre">ders</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.ders" title="Permalink to this definition"></a></dt>
+<dd><p>The derivatives of the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.PysimVars" title="pysim.commonsystem.PysimVars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PysimVars</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.connections">
+<span class="sig-name descname"><span class="pre">connections</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.connections" title="Permalink to this definition"></a></dt>
+<dd><p>The connections from this system to other systems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.connections.Connections" title="pysim.connections.Connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pysim.connections.Connections</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.res">
+<span class="sig-name descname"><span class="pre">res</span></span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.res" title="Permalink to this definition"></a></dt>
+<dd><p>The stored values from the simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pysim.commonsystem.Results" title="pysim.commonsystem.Results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Results</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.add_break_greater">
+<span class="sig-name descname"><span class="pre">add_break_greater</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.add_break_greater" title="Permalink to this definition"></a></dt>
+<dd><p>Add a break that will be activated if the value of the variable
+or state is larger than the value supplied as argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the variable to watch.</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – If the variable is below this value then break</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.add_break_smaller">
+<span class="sig-name descname"><span class="pre">add_break_smaller</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.add_break_smaller" title="Permalink to this definition"></a></dt>
+<dd><p>Add a break that will be activated if the value of the variable
+or state is smaller than the value supplied as argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the variable to watch</p></li>
+<li><p><strong>value</strong> (<em>double</em>) – If the variable is below this value then break</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.set_store_interval">
+<span class="sig-name descname"><span class="pre">set_store_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.set_store_interval" title="Permalink to this definition"></a></dt>
+<dd><p>Set the store interval of this system.</p>
+<p>By default the
+store interval for all systems in a simulation is set by
+the simulation, typically for the step length for fixed
+step algorithms. By calling this function the store interval
+<em>for this system</em> is set differently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>interval</strong> (<em>float</em>) – The time between stores, in seconds.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.store" title="Permalink to this definition"></a></dt>
+<dd><p>Store a input, output or state in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the variable to store.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.commonsystem.CommonSystem.store_all">
+<span class="sig-name descname"><span class="pre">store_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.commonsystem.CommonSystem.store_all" title="Permalink to this definition"></a></dt>
+<dd><p>Store all inputs, outputs, states and ders in the system.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.commonsystem.Parameters">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.commonsystem.</span></span><span class="sig-name descname"><span class="pre">Parameters</span></span><a class="headerlink" href="#pysim.commonsystem.Parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Contains all the parameters for the system.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.commonsystem.PysimVars">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.commonsystem.</span></span><span class="sig-name descname"><span class="pre">PysimVars</span></span><a class="headerlink" href="#pysim.commonsystem.PysimVars" title="Permalink to this definition"></a></dt>
+<dd><p>Contains all the variables for the system.</p>
+<p>Each attribute of this class correspond to a variable of the system.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.commonsystem.Results">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.commonsystem.</span></span><span class="sig-name descname"><span class="pre">Results</span></span><a class="headerlink" href="#pysim.commonsystem.Results" title="Permalink to this definition"></a></dt>
+<dd><p>Class containing the results of a simulation.</p>
+<p>The results are stored as attributes and returned as numpy arrays. They
+can be scalars, vectors or matrices.</p>
+</dd></dl>
+
+</section>
+<section id="module-pysim.cppsystem">
+<span id="cppsystem"></span><h2>CppSystem<a class="headerlink" href="#module-pysim.cppsystem" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.cppsystem.Sys">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.cppsystem.</span></span><span class="sig-name descname"><span class="pre">Sys</span></span><a class="headerlink" href="#pysim.cppsystem.Sys" title="Permalink to this definition"></a></dt>
+<dd><p>Represents a System, to be added to an Simulation for evaluation.
+Each System consists of parameters, inputs set prior to the simulation,
+States and State derivatives, and Variables, that may be stored during
+a simulation</p>
+</dd></dl>
+
+</section>
+<section id="module-pysim.cythonsystem">
+<span id="cythonsystem"></span><h2>CythonSystem<a class="headerlink" href="#module-pysim.cythonsystem" title="Permalink to this headline"></a></h2>
+<p>This module contains functionality for creating a cython or python
+system for pysim. Both cython and python systems can inherit from the
+Sys class in this module and then be added to a simulation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.cythonsystem.Sys">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.cythonsystem.</span></span><span class="sig-name descname"><span class="pre">Sys</span></span><a class="headerlink" href="#pysim.cythonsystem.Sys" title="Permalink to this definition"></a></dt>
+<dd><p>This class is meant to be inherited by python and cython systems.
+They can then be set up and after that used in a simulation together with
+other systems, both c++, python and cython systems.</p>
+</dd></dl>
+
+</section>
+<section id="module-pysim.connections">
+<span id="connections"></span><h2>Connections<a class="headerlink" href="#module-pysim.connections" title="Permalink to this headline"></a></h2>
+<p>Connections between systems</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.connections.Connections">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.connections.</span></span><span class="sig-name descname"><span class="pre">Connections</span></span><a class="headerlink" href="#pysim.connections.Connections" title="Permalink to this definition"></a></dt>
+<dd><p>The connections of the system.
+The connections are either from an output or a state of a system. To add
+a new connection use the function add_connection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.connections.Connections.add_connection">
+<span class="sig-name descname"><span class="pre">add_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.connections.Connections.add_connection" title="Permalink to this definition"></a></dt>
+<dd><p>Connect the outputs from this system to the inputs of another.</p>
+<p>The systems that are to be connected must be derived from a
+CommonSystem, e.g. CppSystems and CythonSystems, or be a
+CompositeSystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputname</strong> (<em>str</em>) – The name of the output of this system</p></li>
+<li><p><strong>inputsys</strong> (<a class="reference internal" href="#pysim.commonsystem.CommonSystem" title="pysim.commonsystem.CommonSystem"><em>CommonSystem</em></a>) – The system that is to be connected, that will receive the signals.</p></li>
+<li><p><strong>inputname</strong> (<em>str</em>) – The name of the input that will receive the signal</p></li>
+<li><p><strong>(</strong><strong>optional</strong><strong>)</strong> (<em>output_index</em>) – The index of a vector to use if connecting to a scalar</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If inputname or outputname are not inputs, outputs members
+    of the system.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simulation.html" class="btn btn-neutral float-left" title="simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

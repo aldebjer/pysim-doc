@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simulation &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Systems" href="systems.html" />
+    <link rel="prev" title="Reference" href="reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_pysim.html">Using PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_systems.html">Creating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_pysim.html">Building PySim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html">Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-pysim.simulation">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solvers">Solvers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="systems.html">Systems</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="reference.html">Reference</a> &raquo;</li>
+      <li>simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/simulation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simulation">
+<h1>simulation<a class="headerlink" href="#simulation" title="Permalink to this headline"></a></h1>
+<section id="module-pysim.simulation">
+<span id="introduction"></span><h2>Introduction<a class="headerlink" href="#module-pysim.simulation" title="Permalink to this headline"></a></h2>
+<p>The simulation module contains a Sim object that represents the simulation.
+The systems added to the Sim object will be used when the simulation is used.
+The module also contains a number of solvers that the Sim object can use.</p>
+</section>
+<section id="id1">
+<h2>Simulation<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.simulation.Sim">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.simulation.</span></span><span class="sig-name descname"><span class="pre">Sim</span></span><a class="headerlink" href="#pysim.simulation.Sim" title="Permalink to this definition"></a></dt>
+<dd><p>This class represents an entire simulation.
+Each simulation consists of one or more Systems that can be added
+to this class</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.systems">
+<span class="sig-name descname"><span class="pre">systems</span></span><a class="headerlink" href="#pysim.simulation.Sim.systems" title="Permalink to this definition"></a></dt>
+<dd><p>The systems added to the simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>OrderedDict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.add_system">
+<span class="sig-name descname"><span class="pre">add_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.simulation.Sim.add_system" title="Permalink to this definition"></a></dt>
+<dd><p>Add a system that will participate in this simulation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.get_time">
+<span class="sig-name descname"><span class="pre">get_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.simulation.Sim.get_time" title="Permalink to this definition"></a></dt>
+<dd><p>Get the current time of the simulation.
+Before any simulation has been run this is 0, but after each
+simulation run it is increased</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.load_config">
+<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.simulation.Sim.load_config" title="Permalink to this definition"></a></dt>
+<dd><p>Loads a number of systems and their input values from a file.
+The file is loaded from the path supplied as an argument to the
+function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.simulation.Sim.save_config" title="Permalink to this definition"></a></dt>
+<dd><p>Stores the simulations systems and their input values to a file.
+The path for the file to be stored at is given by the arguement’
+“filepath”. This file can later be read with the function “load_config”.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pysim.simulation.Sim.simulate">
+<span class="sig-name descname"><span class="pre">simulate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysim.simulation.Sim.simulate" title="Permalink to this definition"></a></dt>
+<dd><p>Start or continue a simulation for duration seconds.
+The default ODE-solver used is the classic fixed steplength
+Runge Kutta 4 (rk4), but it is also possible to use other solvers by
+supplying the solver in the argument “solver”.
+For fixed lenght algorithms the default time step is 0.1 seconds.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="solvers">
+<h2>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline"></a></h2>
+<p>There is currently three solvers that can be used by the Sim class to
+solve the differential equations. The default is the Runge Kutta 4
+algorithm which uses a fixed steplength. But there is two addional
+solvers with variable step length that can be used.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.simulation.Runge_Kutta_4">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.simulation.</span></span><span class="sig-name descname"><span class="pre">Runge_Kutta_4</span></span><a class="headerlink" href="#pysim.simulation.Runge_Kutta_4" title="Permalink to this definition"></a></dt>
+<dd><p>A Runge Kutta 4 solver  that can be used when calculating
+a simulation</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.simulation.Cash_Karp">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.simulation.</span></span><span class="sig-name descname"><span class="pre">Cash_Karp</span></span><a class="headerlink" href="#pysim.simulation.Cash_Karp" title="Permalink to this definition"></a></dt>
+<dd><p>An adaptive steplength solver that can be used when calculating
+a simulation</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pysim.simulation.Dormand_Prince_5">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysim.simulation.</span></span><span class="sig-name descname"><span class="pre">Dormand_Prince_5</span></span><a class="headerlink" href="#pysim.simulation.Dormand_Prince_5" title="Permalink to this definition"></a></dt>
+<dd><p>An adaptive steplength solver that can be used when calculating
+a simulation</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reference.html" class="btn btn-neutral float-left" title="Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="systems.html" class="btn btn-neutral float-right" title="Systems" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

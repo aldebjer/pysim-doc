@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running a Simulation &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analyzing results" href="analyzing_results.html" />
+    <link rel="prev" title="Setting up a system for simulation" href="setting_up_a_system.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="using_pysim.html">Using PySim</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="setting_up_a_system.html">Setting up a system for simulation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running a Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-a-solver">Choosing a solver</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="analyzing_results.html">Analyzing results</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="creating_systems.html">Creating Systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_pysim.html">Building PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="using_pysim.html">Using PySim</a> &raquo;</li>
+      <li>Running a Simulation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/running_a_simulation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-a-simulation">
+<h1>Running a Simulation<a class="headerlink" href="#running-a-simulation" title="Permalink to this headline"></a></h1>
+<p>To run a simulation you will need a Simulation, <em>Sim</em>, object. import
+a Sim class and create an instance by typing</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pysim.simulation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span> <span class="o">=</span> <span class="n">pysim</span><span class="o">.</span><span class="n">simulation</span><span class="o">.</span><span class="n">Sim</span>
+</pre></div>
+</div>
+<p>this instance will contain all the systems added to it. To add a system
+type</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span><span class="o">.</span><span class="n">add_system</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <em>system</em> is the name of the system you want to add. You can also
+specify a name by which the added system is known to the simulation.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span><span class="o">.</span><span class="n">add_system</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="s2">&quot;my_system&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When running a simulation it will solve the differential equations of the systems and
+maintain any connections between systems. To run a standard simulation for 20
+seconds with a timestep of 0.1 type</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When the simulation is finished the equations of all systems have been solved,
+and any variables designated have been stored. To solve the equations the
+standard Runge Kutta 4 algorithm has been used.</p>
+<section id="choosing-a-solver">
+<h2>Choosing a solver<a class="headerlink" href="#choosing-a-solver" title="Permalink to this headline"></a></h2>
+<p>The default solver is the classic Runge Kutta 4, but it is possible to use
+other solvers as well, some using adaptive step lengths and error control.
+To use another solver the solver can be imported from the pysim.simulation
+package. The solver should then be supplied to the simulate call. To use
+the adaptive steplenght Cash Karp solver type</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pysim.simulation</span> <span class="kn">import</span> <span class="n">Cash_Karp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">solver</span> <span class="o">=</span> <span class="n">Cash_Karp</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">solver</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the attentive reader now wonder why there is a timestep when the steplength
+is adaptive. This timestep may be used as a starting point for the adaptive
+step length, but it is also used as a time interval for storing values.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setting_up_a_system.html" class="btn btn-neutral float-left" title="Setting up a system for simulation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="analyzing_results.html" class="btn btn-neutral float-right" title="Analyzing results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

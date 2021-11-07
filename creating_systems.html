@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating Systems &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building PySim" href="building_pysim.html" />
+    <link rel="prev" title="Analyzing results" href="analyzing_results.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_pysim.html">Using PySim</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-python-system">Creating a Python System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-composite-system">Creating a Composite System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-c-system">Creating a C++ System</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building_pysim.html">Building PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Creating Systems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/creating_systems.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-systems">
+<h1>Creating Systems<a class="headerlink" href="#creating-systems" title="Permalink to this headline"></a></h1>
+<p>The building block of a PySim simulation is the <em>system</em>, of which there are
+three variants.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>C++ systems, which are build with a c++ compiler linked to the pysim
+libraries.</p></li>
+<li><p>Python systems. They are much slower than the c++ systems, but also probably
+much faster to create.</p></li>
+<li><p>Composite systems that consists of a collection of the systems above bundled
+together.</p></li>
+</ul>
+</div></blockquote>
+<p>When using a system it looks and feels very much the same, regardless of which
+the above types it belongs to. But the creation of the system is ofcourse
+different, and below we will go trough how to create a system of each type.</p>
+<section id="creating-a-python-system">
+<h2>Creating a Python System<a class="headerlink" href="#creating-a-python-system" title="Permalink to this headline"></a></h2>
+<p>To create a Python system you will inherit from the <code class="docutils literal notranslate"><span class="pre">pysim.cythonsystem.Sys</span></code>
+class and setup the system in its <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function. If, for example,
+you would like to create a system that simulates a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">Van der Pol Oscillator</a>
+you would create a class like the one below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysim.cythonsystem</span> <span class="kn">import</span> <span class="n">Sys</span>
+
+<span class="k">class</span> <span class="nc">VanDerPol</span><span class="p">(</span><span class="n">Sys</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Simple example of a class representing a VanDerPol oscillator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="c1">#declare states and inputs</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_state</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;dx&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_state</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;dy&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+                <span class="c1">#set default values</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>It inherits from pysim.cythonsystem.sys, and sets up the system in the init
+function. First two states <em>x</em> and <em>y</em> are declared together with their
+respective derivatives. Then two scalar inputs, <em>a</em> and <em>b</em> are declared.
+When these inputs and states are declared they are automatically added to
+the objects <code class="docutils literal notranslate"><span class="pre">self.input</span></code> and <code class="docutils literal notranslate"><span class="pre">self.states</span></code> structs. These structs can be
+set and read from within the object as well as from outside of it.
+Finally the default values for all inputs and states are set by setting
+the values in these structs.</p>
+<p>We now have a system with states and inputs, but we want the system to actually
+do something. In particular we want the system to calculate the derivatives
+based on the states and the inputs. The equations of a Van der Pol oscillator
+can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\dot{x} &amp;= ax(b-y^2)-y \\
+\dot{y} &amp;= x
+\end{align}\end{split}\]</div>
+<p>These equations should be evaluated for each time step in the simulation. This
+evaluation is done in the <code class="docutils literal notranslate"><span class="pre">do_step</span></code> function which thus must be defined
+in our class. To make the coded equations more readable in our function the
+auxiliary variables <em>a,b,x,y</em> are introduced and set to the respective inputs
+and states. Then the derivatives are calculated.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">dummy</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a timestep by implmenting the VanDerPol equations&quot;&quot;&quot;</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">a</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">b</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ders</span><span class="o">.</span><span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ders</span><span class="o">.</span><span class="n">dy</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Thats it, we now have a complete system for simulating a Van der Pol oscillator.
+The complete source code can be found at github <a class="reference external" href="https://github.com/aldebjer/pysim-system-template/blob/master/pysim_system_template/systems/example_python_systems.py">here</a>.</p>
+</section>
+<section id="creating-a-composite-system">
+<h2>Creating a Composite System<a class="headerlink" href="#creating-a-composite-system" title="Permalink to this headline"></a></h2>
+<p>A Composite System is created by inhering from the
+<code class="docutils literal notranslate"><span class="pre">pysim.compositesystem.CompositeSystem</span></code> class and
+setting up the system in its init function.</p>
+<p>The systems that make up the compositesystem are added to it
+with the function <code class="docutils literal notranslate"><span class="pre">add_subsystem</span></code>, taking the system and the name of
+the subsystem as inputs.To enable “outside” system to connect to and from the
+composite systems <em>ports</em> are added to it with the functions <code class="docutils literal notranslate"><span class="pre">add_input_port</span></code>
+and <code class="docutils literal notranslate"><span class="pre">add_output_port</span></code>. These functions take the name of the port (the name
+of the input of the composite system), the name of the subsystem the port
+shall be connected to internally, and the name of the input of that system.
+The last argument is a description of the port</p>
+<p>If you, for example want to create a composite system that is made up of two
+systems, a mass-spring-damper system and a square wave system that will
+drive the former system you create a class looking like below</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ControlledSpring</span><span class="p">(</span><span class="n">CompositeSystem</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;System with a mass-spring-damper driven by a square wave.</span>
+
+<span class="sd">        The square wave is applied as a force acting on the mass,</span>
+<span class="sd">        driving it up and down. The amplitude of the square wave can</span>
+<span class="sd">        be set with the input &#39;amp&#39; and the position of the mass</span>
+<span class="sd">        can be read from the output &#39;pos&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+                <span class="c1">#Create the two subsystems</span>
+                <span class="n">msd</span> <span class="o">=</span> <span class="n">MassSpringDamper</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">msd</span><span class="p">,</span><span class="s2">&quot;msd&quot;</span><span class="p">)</span>
+                <span class="n">wave_sys</span> <span class="o">=</span> <span class="n">SquareWave</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_subsystem</span><span class="p">(</span><span class="n">wave_sys</span><span class="p">,</span><span class="s2">&quot;wave_sys&quot;</span><span class="p">)</span>
+
+                <span class="c1">#connect the internal subsystems</span>
+                <span class="n">wave_sys</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">add_connection</span><span class="p">(</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">msd</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">)</span>
+
+                <span class="c1">#make parts of the subsystems available from outside this composite system</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_input_port</span><span class="p">(</span><span class="s2">&quot;amp&quot;</span><span class="p">,</span><span class="s2">&quot;wave_sys&quot;</span><span class="p">,</span><span class="s2">&quot;amplitude&quot;</span><span class="p">,</span> <span class="s2">&quot;amplitude of wave&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_output_port</span><span class="p">(</span><span class="s2">&quot;pos&quot;</span><span class="p">,</span><span class="s2">&quot;msd&quot;</span><span class="p">,</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The two subsystems are first created individually and connected as usual.
+They are then added  to the composite system, and finally some of the inputs
+and outputs are exposed to the composite system interface.</p>
+<p>This composite system will now behave as any other system from the outside.
+It will have one input <code class="docutils literal notranslate"><span class="pre">amp</span></code> and one output <code class="docutils literal notranslate"><span class="pre">pos</span></code>.</p>
+</section>
+<section id="creating-a-c-system">
+<h2>Creating a C++ System<a class="headerlink" href="#creating-a-c-system" title="Permalink to this headline"></a></h2>
+<p>While its very easy to create a composite or a python system c++ systems are a
+little harder since they are compiled and the compiler needs links to pysim.
+Until a better description is available the best way to create a c++ system is
+to clone the template found at github in the
+<a class="reference external" href="https://github.com/aldebjer/pysim-system-template">pysim-system-template</a>
+repository and use that as a starting point. It contains a python system
+as well as a c++ system that can be modified. Assuming you have installed
+pysim the systems and clone the template systems it can be built by typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py build_ext
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="analyzing_results.html" class="btn btn-neutral float-left" title="Analyzing results" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="building_pysim.html" class="btn btn-neutral float-right" title="Building PySim" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

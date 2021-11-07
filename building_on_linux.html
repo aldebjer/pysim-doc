@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building PySim on Linux &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reference" href="reference.html" />
+    <link rel="prev" title="Building PySim on Mac OS" href="building_on_mac.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_pysim.html">Using PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_systems.html">Creating Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="building_pysim.html">Building PySim</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building_on_windows.html">Building PySim on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_on_mac.html">Building PySim on Mac OS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building PySim on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-the-source">Getting the source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-compiler-and-libraries">Installing the compiler and libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-python-dependancies">Installing the Python dependancies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-pysim">Building PySim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-documentation">Building the documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="building_pysim.html">Building PySim</a> &raquo;</li>
+      <li>Building PySim on Linux</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/building_on_linux.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-pysim-on-linux">
+<h1>Building PySim on Linux<a class="headerlink" href="#building-pysim-on-linux" title="Permalink to this headline"></a></h1>
+<dl class="simple">
+<dt>To build PySim on Linux you need:</dt><dd><ul class="simple">
+<li><p>Python 3</p></li>
+<li><p>Cython</p></li>
+<li><p>NumPy</p></li>
+<li><p>The Boost libraries</p></li>
+<li><p>The Eigen c++ library</p></li>
+</ul>
+</dd>
+<dt>To run the test you will need</dt><dd><ul class="simple">
+<li><p>pytest</p></li>
+<li><p>pytest-runner</p></li>
+</ul>
+</dd>
+<dt>And to build the documention you will need</dt><dd><ul class="simple">
+<li><p>sphinx</p></li>
+<li><p>sphinx-rtd-theme</p></li>
+</ul>
+</dd>
+</dl>
+<section id="getting-the-source">
+<h2>Getting the source<a class="headerlink" href="#getting-the-source" title="Permalink to this headline"></a></h2>
+<p>The source for pysim can be checked out from github by typing</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/aldebjer/pysim.git
+</pre></div>
+</div>
+<p>which by default will clone the pysim repository into a pysim directory.</p>
+</section>
+<section id="installing-the-compiler-and-libraries">
+<h2>Installing the compiler and libraries<a class="headerlink" href="#installing-the-compiler-and-libraries" title="Permalink to this headline"></a></h2>
+<p>You might already have the compilers, boost and eigen libraries installed, but to make
+sure type (on Ubuntu)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install build-essential libboost-all-dev libeigen3-dev
+</pre></div>
+</div>
+</section>
+<section id="installing-the-python-dependancies">
+<h2>Installing the Python dependancies<a class="headerlink" href="#installing-the-python-dependancies" title="Permalink to this headline"></a></h2>
+<p>Python 3 is probably already installed, at least on the latest versions of Ubuntu.
+The Numpy dependancy takes some time to compile so it is probably easiset to
+install a pre compiled version by typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3-numpy
+</pre></div>
+</div>
+<p>The rest of the dependancies can be installed through pip by moving to the pysim
+directory and typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install -r requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="building-pysim">
+<h2>Building PySim<a class="headerlink" href="#building-pysim" title="Permalink to this headline"></a></h2>
+<p>To build pysim move to the pysim directory and type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py build_clib
+</pre></div>
+</div>
+<p>and then</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py build_ext --inplace
+</pre></div>
+</div>
+<p>This will build the c++ libraries and put the cython extensions side by side
+with the python code.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline"></a></h2>
+<p>After all cython and c++ modules are built and placed in along the python modules
+you can use PyTest to test the entire pysim package.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m pytest
+</pre></div>
+</div>
+<p>which should give you a result stating the number of tests, the time the testing
+took, and a final “OK”.</p>
+</section>
+<section id="building-the-documentation">
+<h2>Building the documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this headline"></a></h2>
+<p>To build the documentation go to the checked out pysim directort and types</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py build_sphinx
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="building_on_mac.html" class="btn btn-neutral float-left" title="Building PySim on Mac OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reference.html" class="btn btn-neutral float-right" title="Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building PySim on Windows &mdash; PySim 2.4.dev0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building PySim on Mac OS" href="building_on_mac.html" />
+    <link rel="prev" title="Building PySim" href="building_pysim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PySim
+          </a>
+              <div class="version">
+                2.4.dev0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing_pysim.html">Installing PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_pysim.html">Using PySim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_systems.html">Creating Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="building_pysim.html">Building PySim</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building PySim on Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-a-compiler">Install a compiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-boost">Install Boost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-eigen">Install Eigen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-out-the-source">Check out the Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-python-dependancies">Install Python Dependancies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building">Building</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#building-with-setuptools">Building with Setuptools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-with-the-visual-studio-ide">Building with the Visual Studio IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="building_on_mac.html">Building PySim on Mac OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_on_linux.html">Building PySim on Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySim</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="building_pysim.html">Building PySim</a> &raquo;</li>
+      <li>Building PySim on Windows</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/building_on_windows.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-pysim-on-windows">
+<h1>Building PySim on Windows<a class="headerlink" href="#building-pysim-on-windows" title="Permalink to this headline"></a></h1>
+<dl class="simple">
+<dt>To build PySim on windows you need:</dt><dd><ul class="simple">
+<li><p>Visual studio 2015 (community version works)</p></li>
+<li><p>Boost Libraries</p></li>
+<li><p>Eigen libraries</p></li>
+<li><p>Python &gt;= 3.5</p></li>
+<li><p>Cython</p></li>
+<li><p>NumPy</p></li>
+<li><p>PyTest</p></li>
+</ul>
+</dd>
+</dl>
+<section id="install-a-compiler">
+<h2>Install a compiler<a class="headerlink" href="#install-a-compiler" title="Permalink to this headline"></a></h2>
+<p>Make sure that you have the visual studio compiler installed. This compiler
+is used both for building with SetupTools and for building with the
+Visual Studio IDE. Since the official Python 3 is built with Visual Studio
+compiler 2015 this is what PySim, as well as any other package for Python 3
+need to be built with as well.</p>
+</section>
+<section id="install-boost">
+<h2>Install Boost<a class="headerlink" href="#install-boost" title="Permalink to this headline"></a></h2>
+<p>You can download the Boost libraries from <a class="reference external" href="http://www.boost.org/">http://www.boost.org/</a>.</p>
+<p>For PySim to find the boost libraries there must be a environment variable
+named <code class="docutils literal notranslate"><span class="pre">BOOST_ROOT</span></code> that is set to the directory where Boost is installed. This
+directory should have the boost include directory as subfolders.</p>
+</section>
+<section id="install-eigen">
+<h2>Install Eigen<a class="headerlink" href="#install-eigen" title="Permalink to this headline"></a></h2>
+<p>You can find the Eigen library at <a class="reference external" href="http://eigen.tuxfamily.org">http://eigen.tuxfamily.org</a>. It is a
+headers only library so it does not need to be compiled. Simply
+unzip the download to a suitable directory and then set an environment
+variable named <code class="docutils literal notranslate"><span class="pre">EIGEN_ROOT</span></code> to that directory.</p>
+</section>
+<section id="check-out-the-source">
+<h2>Check out the Source<a class="headerlink" href="#check-out-the-source" title="Permalink to this headline"></a></h2>
+<p>The source can be found at: <a class="reference external" href="https://github.com/aldebjer/pysim.git">https://github.com/aldebjer/pysim.git</a></p>
+<p>Check out the source to a source directory, e.g. <code class="docutils literal notranslate"><span class="pre">C:/Dev/pysim</span></code></p>
+</section>
+<section id="install-python-dependancies">
+<h2>Install Python Dependancies<a class="headerlink" href="#install-python-dependancies" title="Permalink to this headline"></a></h2>
+<p>The python requirements are collected in a file called requiements.txt. To
+install these requirements use pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline"></a></h2>
+<p>PySim can be built either using Setuptools or using the Visual Studio IDE.
+Building with Setuptools allows for creating binary distributions and uploading
+these to PyPi. Building with Visual Studio allows for mixed python-c++
+step-debugging. Both methods are described below.</p>
+<section id="building-with-setuptools">
+<h3>Building with Setuptools<a class="headerlink" href="#building-with-setuptools" title="Permalink to this headline"></a></h3>
+<p>To build with setuptools open a command prompt and move to the pysim directory,
+e.g.``C:/dev/pysim/<a href="#id1"><span class="problematic" id="id2">``</span></a>. To build the c libraries type:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py build_clib
+</pre></div>
+</div>
+<p>After that we build the the c++ and cython
+modules and place them besides the python module by typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py build_ext --inplace
+</pre></div>
+</div>
+</section>
+<section id="building-with-the-visual-studio-ide">
+<h3>Building with the Visual Studio IDE<a class="headerlink" href="#building-with-the-visual-studio-ide" title="Permalink to this headline"></a></h3>
+<p>There are solution and project files for visual studio in the <code class="docutils literal notranslate"><span class="pre">MSVC</span></code>
+directory. Open the file <code class="docutils literal notranslate"><span class="pre">msvc/pysim.sln</span></code> with visual studio, select the
+release build and choose build all.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline"></a></h2>
+<p>After all cython and c++ modules are built, either with setuptools or with
+the visual studio ide, and placed in along the python modules you can use
+PyTest to test the entire pysim package.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m pytest
+</pre></div>
+</div>
+<p>which should give you a result stating the number of tests, the time the testing
+took, and a final “OK” printed.</p>
+<p>If you want to try using pysim with a python prompt then type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+<p>You can now do the tests from within the python environment by typing</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pysim</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pysim</span><span class="o">.</span><span class="n">tests</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="building_pysim.html" class="btn btn-neutral float-left" title="Building PySim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="building_on_mac.html" class="btn btn-neutral float-right" title="Building PySim on Mac OS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014-2016, SSPA Sweden AB.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
