@@ -131,7 +131,7 @@ finished the results can be inspected using for example matplotlib.</p>
 <span class="c1">#Create, set up and add a system to simulation</span>
 <span class="n">sys</span> <span class="o">=</span> <span class="n">VanDerPol</span><span class="p">()</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
-<span class="n">sim</span><span class="o">.</span><span class="n">addSys</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">add_system</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
 
 <span class="c1">#Simulate and plot the results</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
